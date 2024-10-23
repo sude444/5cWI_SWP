@@ -1,47 +1,30 @@
 package at.bas.projects.camera;
 
+import java.util.Random;
+
 public class Camera {
-    private String color;
-    private float weight;
-    private int pixel;
-    private SDcard sDcard;
+    private int pixels;
+    private int weight;
+    private int pictureSize;
+    private SD sd;
+    private Random random = new Random();
 
-    // Constructor
-
-    public Camera(String color, float weight, int pixel, SDcard sDcard) {
-        this.color = color;
+    public Camera(int pixels, int weight, int pictureSize, SD sd) {
+        this.pixels = pixels;
         this.weight = weight;
-        this.pixel = pixel;
-        this.sDcard = sDcard;
+        this.pictureSize = pictureSize;
+        this.sd = sd;
     }
 
-    public void getInfo() {
-        System.out.println("----------------------\n" + "SDCard: ");
-        sDcard.getInfo();
+    public void takePicture() {
+        Picture newPicture = new Picture(pictureSize, "" + random.nextInt() + ".jpg");
+        System.out.println("Picture Taken: " + newPicture.getName());
+        sd.SavePicture(newPicture);
     }
 
-    // Getter and Setter
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public float getWeight() {
-        return weight;
-    }
-
-    public void setWeight(float weight) {
-        this.weight = weight;
-    }
-
-    public int getPixel() {
-        return pixel;
-    }
-
-    public void setPixel(int pixel) {
-        this.pixel = pixel;
+    public void printAllPictures() {
+        for (Picture picture : sd.GetAllFiles()) {
+            System.out.println(picture.getName());
+        }
     }
 }
