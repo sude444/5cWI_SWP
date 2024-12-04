@@ -3,37 +3,33 @@ package at.bas.projects.dataGenerator;
 import java.util.Random;
 
 public class DataGenerator {
-    public static int[] generateDataArray(int size) {
+
+    // Generates an integer array with a given size
+    public static int[] generateArray(int size) {
+        int[] array = new int[size];
         Random random = new Random();
-        int[] data = new int[size];
         for (int i = 0; i < size; i++) {
-            data[i] = random.nextInt();
+            array[i] = random.nextInt();
         }
-        return data;
+        return array;
     }
 
-    public static int[] generateDataArray(int size, int min, int max) {
+    // Generates an integer array with a given size, with integers in a range
+    // between min and max
+    public static int[] generateArrayInRange(int size, int min, int max) {
+        int[] array = new int[size];
         Random random = new Random();
-        int[] data = new int[size];
         for (int i = 0; i < size; i++) {
-            data[i] = random.nextInt(min, max);
+            array[i] = random.nextInt((max - min) + 1) + min;
         }
-        return data;
+        return array;
     }
 
-    public static void printArray(int[] data) {
-        for (int i = 0; i < data.length - 1; i++) {
-            for (int j = 0; j < data.length - i - 1; j++) {
-                if (data[j] > data[j + 1]) {
-                    int temp = data[j];
-                    data[j] = data[j + 1];
-                    data[j + 1] = temp;
-                }
-            }
+    // Prints a given integer array
+    public static void printArray(int[] array) {
+        for (int num : array) {
+            System.out.print(num + " ");
         }
-
-        for (int a = 0; a < data.length - 1; a++) {
-            System.out.println(data[a]);
-        }
+        System.out.println();
     }
 }
