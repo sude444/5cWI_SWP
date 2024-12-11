@@ -25,7 +25,7 @@ public class DataGenerator {
         return array;
     }
 
-    // Prints a given integer array
+    // Prints a given integer arraynm
     public static void printArray(int[] array) {
         for (int num : array) {
             System.out.print(num + " ");
