@@ -2,18 +2,34 @@ package shop;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
 import shop.products.Product;
 
 public class GUI {
-    private List<Product> Products = new ArrayList<Product>();
+    private Scanner scanner = new Scanner(System.in);
+    private List<Product> products = new ArrayList();
 
-    public void AddProduct(Product prod) {
-        Products.add(prod);
+    public void addProduct(Product product) {
+        this.products.add(product);
     }
 
-    public void getProducts() {
-        for (Product p : Products) {
-            System.out.println(p.getName() + " " + p.getPrice());
+    public void run() {
+        System.out.println("What do you want to do?");
+        int input = scanner.nextInt();
+
+        switch (input) {
+            case 1:
+                for (Product pro : products) {
+                    System.out.println(pro);
+                }
+                break;
+            case 2:
+                System.out.println("Goodbye!");
+                break;
+            default:
+                System.out.println("Goodbye!");
+                break;
         }
     }
 }
